@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.accountRouter = void 0;
+const express_1 = require("express");
+const account_controller_1 = require("../controllers/account.controller");
+const account_service_1 = require("../services/account.service");
+const accountRouter = (0, express_1.Router)();
+exports.accountRouter = accountRouter;
+const accountController = new account_controller_1.AccountController(account_service_1.accountService);
+// accountRouter.post("/", accountController.create.bind(accountController));
+accountRouter.get("/", accountController.list.bind(accountController));
