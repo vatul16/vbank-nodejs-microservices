@@ -7,7 +7,7 @@ export const getLogger = (service: string, level = "debug") => {
     format: winston.format.combine(
       winston.format.timestamp(),
       winston.format.printf(({ level, message, timestamp, service }) => {
-        return `[${timestamp}] [${level.toUpperCase()}] [${service}]: ${message}`;
+        return `[${timestamp}] [${level}] [${service}]: ${message}`;
       })
     ),
     transports: [new winston.transports.Console()],

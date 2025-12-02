@@ -10,7 +10,7 @@ const getLogger = (service, level = "debug") => {
         level: level,
         defaultMeta: { service: service },
         format: winston_1.default.format.combine(winston_1.default.format.timestamp(), winston_1.default.format.printf(({ level, message, timestamp, service }) => {
-            return `[${timestamp}] [${level.toUpperCase()}] [${service}]: ${message}`;
+            return `[${timestamp}] [${level}] [${service}]: ${message}`;
         })),
         transports: [new winston_1.default.transports.Console()],
     });
