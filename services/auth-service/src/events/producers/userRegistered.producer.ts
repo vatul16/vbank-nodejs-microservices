@@ -1,5 +1,5 @@
+import { USER_TOPICS } from "@vbank/constants";
 import logger from "../../config/logger";
-import { USER_TOPICS } from "../../constants";
 
 import { producer } from "../kafka";
 

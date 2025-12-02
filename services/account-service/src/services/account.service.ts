@@ -6,7 +6,7 @@ import {
   TransactionType,
 } from "../entity/account.entity";
 import { createError, generateAccountNumber } from "../utils";
-import { ERROR_CODES, SAVINGS_ACCOUNT } from "../constants";
+import { ERROR_CODES, SAVINGS_ACCOUNT } from "@vbank/constants";
 import { publishAccountCreated } from "../events/producers/accountCreated.producer";
 import logger from "../config/logger";
 import { publishAccountDeleted } from "../events/producers/accountDeleted.producer";

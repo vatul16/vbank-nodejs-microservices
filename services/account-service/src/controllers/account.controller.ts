@@ -3,7 +3,7 @@ import { z } from 'zod';
 
 import { AccountType, TransactionType } from '../entity/account.entity';
 import { AccountService } from '../services/account.service';
-import { SAVINGS_ACCOUNT } from '../constants';
+import { SAVINGS_ACCOUNT } from '@vbank/constants';
 
 const createSchema = z.object({
   accountType: z

@@ -1,4 +1,4 @@
-import { USER_TOPICS } from "../../constants";
+import { USER_TOPICS } from "@vbank/constants";
 import { BaseProducer, KafkaMessage } from "./base.producer";
 
 export interface AccountCreatedData {

@@ -7,3 +7,4 @@ export declare const ERROR_CODES: {
     ACCOUNT_NOT_FOUND: string;
     INSUFFICIENT_BALANCE: string;
 };
+export declare const SAVINGS_ACCOUNT = "savings account";

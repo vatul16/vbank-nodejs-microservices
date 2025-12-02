@@ -12,7 +12,10 @@
     "test": "jest"
   },
   "dependencies": {
+    "@vbank/constants": "../../packages/constants",
+    "@vbank/kafka-client": "../../packages/kafka-client",
     "@vbank/logger": "../../packages/logger",
+    "@vbank/redis-client": "../../packages/redis-client",
     "dotenv": "^16.4.7",
     "express": "^5.1.0",
     "ioredis": "^5.5.0",

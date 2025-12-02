@@ -12,7 +12,10 @@
     "test": "jest"
   },
   "dependencies": {
+    "@vbank/constants": "../../packages/constants",
+    "@vbank/kafka-client": "../../packages/kafka-client",
     "@vbank/logger": "../../packages/logger",
+    "@vbank/redis-client": "../../packages/redis-client",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
