@@ -4,22 +4,22 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-} from "typeorm";
+} from 'typeorm';
 
 export enum AccountType {
-  SAVINGS = "savings",
-  CURRENT = "current",
+  SAVINGS = 'savings',
+  CURRENT = 'current',
 }
 
 export enum AccountStatus {
-  ACTIVE = "active",
-  FROZEN = "frozen",
-  CLOSED = "closed",
+  ACTIVE = 'active',
+  FROZEN = 'frozen',
+  CLOSED = 'closed',
 }
 
 export enum TransactionType {
-  CREDIT = "credit",
-  DEBIT = "debit",
+  CREDIT = 'credit',
+  DEBIT = 'debit',
 }
 
 export class DecimalColumnTransformer {
@@ -36,39 +36,39 @@ export class Account {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ name: "user_id" })
+  @Column({ name: 'user_id' })
   userId: number;
 
   @Column({
     unique: true,
-    name: "account_number",
+    name: 'account_number',
     length: 15,
-    comment: "Numeric account identifier stored as string",
+    comment: 'Numeric account identifier stored as string',
   })
   accountNumber: string;
 
-  @Column({ name: "account_name", nullable: true })
+  @Column({ name: 'account_name', nullable: true })
   accountName: string;
 
   @Column({
-    name: "account_type",
-    type: "enum",
+    name: 'account_type',
+    type: 'enum',
     enum: AccountType,
     default: AccountType.SAVINGS,
   })
   accountType: AccountType;
 
   @Column({
-    name: "account_status",
-    type: "enum",
+    name: 'account_status',
+    type: 'enum',
     enum: AccountStatus,
     default: AccountStatus.ACTIVE,
   })
   accountStatus: AccountStatus;
 
   @Column({
-    name: "balance",
-    type: "decimal",
+    name: 'balance',
+    type: 'decimal',
     precision: 10,
     scale: 2,
     default: 0,
@@ -76,15 +76,15 @@ export class Account {
   })
   balance: number;
 
-  @Column({ name: "currency", default: "INR", length: 3 })
+  @Column({ name: 'currency', default: 'INR', length: 3 })
   currency: string;
 
-  @CreateDateColumn({ name: "created_at" })
+  @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
-  @UpdateDateColumn({ name: "updated_at" })
+  @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
 
-  @Column({ name: "closed_at", nullable: true })
+  @Column({ name: 'closed_at', nullable: true })
   closedAt: Date;
 }

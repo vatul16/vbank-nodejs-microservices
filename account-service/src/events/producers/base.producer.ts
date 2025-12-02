@@ -12,7 +12,7 @@ export abstract class BaseProducer<T> {
   async publish(data: KafkaMessage<T>): Promise<void> {
     try {
       logger.info(
-        `publishing message to kafka: ${this.topic} with message: ${JSON.stringify(data)}`,
+        `publishing message to topic: ${this.topic} with message: ${JSON.stringify(data)}`,
       );
 
       await producer.send({
