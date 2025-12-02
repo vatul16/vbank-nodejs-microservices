@@ -1,15 +1,15 @@
-import { AppDataSource } from '../data-source';
-import { Repository } from 'typeorm';
+import { AppDataSource } from "../data-source";
+import { Repository } from "typeorm";
 import {
   AccountType,
   Account,
   TransactionType,
-} from '../entity/account.entity';
-import { createError, generateAccountNumber } from '../utils';
-import { ERROR_CODES, SAVINGS_ACCOUNT } from './../constants';
-import { publishAccountCreated } from '../events/producers/accountCreated.producer';
-import logger from '../config/logger';
-import { publishAccountDeleted } from '../events/producers/accountDeleted.producer';
+} from "../entity/account.entity";
+import { createError, generateAccountNumber } from "../utils";
+import { ERROR_CODES, SAVINGS_ACCOUNT } from "../constants";
+import { publishAccountCreated } from "../events/producers/accountCreated.producer";
+import logger from "../config/logger";
+import { publishAccountDeleted } from "../events/producers/accountDeleted.producer";
 
 interface AccountCreateDto {
   userId: number;
@@ -35,7 +35,7 @@ export class AccountService {
     });
 
     if (existing) {
-      throw createError('account already exists', 400);
+      throw createError("account already exists", 400);
     }
 
     const account = new Account();
@@ -70,7 +70,7 @@ export class AccountService {
     });
 
     if (!account) {
-      throw createError('account not found', 404);
+      throw createError("account not found", 404);
     }
 
     const deleteRes = await this.accountRepository.delete({
@@ -79,7 +79,7 @@ export class AccountService {
     });
 
     if (deleteRes.affected === 0) {
-      throw createError('account not found', 404);
+      throw createError("account not found", 404);
     } else if (deleteRes.affected === 1) {
       logger.info(
         `account ${accountNumber} deleted for user ${userId}`,
@@ -95,7 +95,7 @@ export class AccountService {
         `account ${accountNumber} deletion failed for user ${userId}`,
         deleteRes,
       );
-      throw createError('account deletion failed', 500);
+      throw createError("account deletion failed", 500);
     }
   }
 
@@ -111,14 +111,14 @@ export class AccountService {
     });
 
     if (!account) {
-      throw createError('account not found', 404);
+      throw createError("account not found", 404);
     }
 
     if (type === TransactionType.CREDIT) {
       account.balance += amount;
     } else if (type === TransactionType.DEBIT) {
       if (account.balance < amount) {
-        throw createError('insufficient balance', 400);
+        throw createError("insufficient balance", 400);
       }
 
       account.balance -= amount;
@@ -143,7 +143,7 @@ export class AccountService {
 
     if (!account) {
       throw createError(
-        'account not found',
+        "account not found",
         404,
         ERROR_CODES.ACCOUNT_NOT_FOUND,
       );
@@ -154,7 +154,7 @@ export class AccountService {
     } else if (type === TransactionType.DEBIT) {
       if (account.balance < amount) {
         throw createError(
-          'insufficient balance',
+          "insufficient balance",
           400,
           ERROR_CODES.INSUFFICIENT_BALANCE,
         );
